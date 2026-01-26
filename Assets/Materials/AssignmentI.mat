@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AssignmentI
+  m_Shader: {fileID: 4800000, guid: 76789f85866246a49fef9b9a458a23f0, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _APPLYOFFSET_ON
+  - _CLIPBLACKPIXELS_ON
+  - _VERT_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _HealthbarTex:
+        m_Texture: {fileID: 2800000, guid: 1f07b7dba0d22be4aafed32a2608c3fe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 74d29bb5dacf07d42a95b79f80e95191, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MossTex:
+        m_Texture: {fileID: 2800000, guid: 74d29bb5dacf07d42a95b79f80e95191, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PatternTex:
+        m_Texture: {fileID: 2800000, guid: 3d772ca7de03a604dad7e6716cae03cc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RockTex:
+        m_Texture: {fileID: 2800000, guid: cca7be6b080c7e84bad46b2108c7c2c1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints:
+    - _ApplyOffset: 1
+    - _ClipBlackPixels: 1
+    - _USE_TEX: 0
+    - _VERT: 1
+    m_Floats:
+    - _BorderOutlineScale: 0.02
+    - _BorderOutlineThickness: 0.02
+    - _ColorEnd: 0.63
+    - _ColorStart: 0.192
+    - _Health: 0.1
+    - _MaxThreshold: 0.8
+    - _MinThreshold: 0.2
+    - _MipValue: 4.09
+    - _RippleAmp: 0.062
+    - _Scale: 1.06
+    - _StepThreshold: 0.32
+    - _Value: 3.49
+    - _WaveAmp: 0.038
+    m_Colors:
+    - _BorderOutlineOffset: {r: 0.08, g: 0.01, b: 0.06, a: 0.26}
+    - _BorderOutlineScale: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.24631536, g: 0.20852618, b: 0.6226415, a: 0.95686275}
+    - _ColorA: {r: 0.7647059, g: 0.011764705, b: 0.600698, a: 1}
+    - _ColorB: {r: 0, g: 1, b: 0.63284254, a: 1}
+    - _ColorEnd: {r: 0.078645825, g: 0.764151, b: 0.046858337, a: 1}
+    - _ColorStart: {r: 0.6886792, g: 0.022739422, b: 0.022739422, a: 1}
+    - _Offset: {r: -0.37, g: -0.5, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

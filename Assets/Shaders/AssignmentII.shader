@@ -4,6 +4,7 @@ Shader "Assignments/Two"
     {
         _RockAlbedo ("Rock Albedo", 2D) = "white" {}
         [NoScaleOffset] _RockNormals ("Rock Normals", 2D) = "bump" {}
+        _NormalsIntensity ("Normal Intensity", Range(0.0, 1.0)) = 0
         _Color ("Color", Color) = (1.0, 1.0, 1.0, 1.0)
         _Gloss ("Gloss", Float) = 1.0
     }

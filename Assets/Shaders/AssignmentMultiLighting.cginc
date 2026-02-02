@@ -3,7 +3,9 @@
 #include "AutoLight.cginc"
 
 sampler2D _RockAlbedo;
+float4 _RockAlbedo_ST;
 sampler2D _RockNormals;
+float _NormalsIntensity;
 float4 _Color;
 float _Gloss;
 
@@ -30,7 +32,7 @@ Interpolators vert(MeshData v)
 {
     Interpolators o;
     o.vertex = UnityObjectToClipPos(v.vertex);
-    o.uv = v.uv;
+    o.uv = TRANSFORM_TEX(v.uv, _RockAlbedo);
     o.normal = UnityObjectToWorldNormal(v.normal);
     o.tangent = UnityObjectToWorldDir(v.tangent.xyz);
     // Sign info of the tangent help us to correctly interpret the normal map in case the UVs are flipped
@@ -50,12 +52,13 @@ float4 frag(Interpolators i) : SV_Target
 
     // Diffuse lighting
     float3 tangentspacenormal = UnpackNormal(tex2D(_RockNormals, i.uv));
+    float3 normal = normalize(lerp(float3(0, 0, 1), tangentspacenormal, _NormalsIntensity));
     float3x3 mtx = {
         i.tangent.x, i.bitangent.x, i.normal.x,
         i.tangent.y, i.bitangent.y, i.normal.y,
         i.tangent.z, i.bitangent.z, i.normal.z
     };
-    float3 N = mul(mtx, tangentspacenormal);
+    float3 N = mul(mtx, normal);
     // float3 N = normalize(i.normal);
     float3 L = normalize(UnityWorldSpaceLightDir(i.vertex_worldpos));
     float attenuation = LIGHT_ATTENUATION(i);

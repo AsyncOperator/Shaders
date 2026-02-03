@@ -30,6 +30,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 1f07b7dba0d22be4aafed32a2608c3fe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 2800000, guid: 73e0b94fbab3ec042b6e9f040bdb08e6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 74d29bb5dacf07d42a95b79f80e95191, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -45,6 +49,10 @@ Material:
     - _RockAlbedo:
         m_Texture: {fileID: 2800000, guid: cca7be6b080c7e84bad46b2108c7c2c1, type: 3}
         m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _RockHeight:
+        m_Texture: {fileID: 2800000, guid: 73e0b94fbab3ec042b6e9f040bdb08e6, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RockNormal:
         m_Texture: {fileID: 0}
@@ -70,6 +78,7 @@ Material:
     - _ColorStart: 0.192
     - _Gloss: 420.8
     - _Health: 0.1
+    - _HeightValue: 0.028
     - _MaxThreshold: 0.8
     - _MinThreshold: 0.2
     - _MipValue: 4.09

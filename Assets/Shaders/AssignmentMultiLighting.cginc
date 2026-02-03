@@ -6,6 +6,8 @@ sampler2D _RockAlbedo;
 float4 _RockAlbedo_ST;
 sampler2D _RockNormals;
 float _NormalsIntensity;
+sampler2D _RockHeight;
+float _HeightValue;
 float4 _Color;
 float _Gloss;
 
@@ -31,8 +33,13 @@ struct Interpolators
 Interpolators vert(MeshData v)
 {
     Interpolators o;
-    o.vertex = UnityObjectToClipPos(v.vertex);
-    o.uv = TRANSFORM_TEX(v.uv, _RockAlbedo);
+    float2 uv = TRANSFORM_TEX(v.uv, _RockAlbedo);
+    // Remap from [0, 1] range to [-1, 1] range
+    float t = tex2Dlod(_RockHeight, float4(uv, 0, 0)).x * 2.0 - 1.0;
+    float3 offset = v.normal * t * _HeightValue;
+
+    o.vertex = UnityObjectToClipPos(v.vertex + offset);
+    o.uv = uv;
     o.normal = UnityObjectToWorldNormal(v.normal);
     o.tangent = UnityObjectToWorldDir(v.tangent.xyz);
     // Sign info of the tangent help us to correctly interpret the normal map in case the UVs are flipped

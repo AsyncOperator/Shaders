@@ -7,7 +7,9 @@ Shader "Assignments/Two"
         [NoScaleOffset] _RockHeight ("Rock Height", 2D) = "gray" {}
         _HeightValue ("Height Value", Range(0.0, 0.4)) = 0
         _NormalsIntensity ("Normal Intensity", Range(0.0, 1.0)) = 0
+        [Toggle] _AMBIENTLIGHT ("Use Ambient Light", Integer) = 0
         _AmbientLight ("Ambient Light", Color) = (1.0, 1.0, 1.0, 1.0)
+        [NoScaleOffset] _DiffuseIBL ("Diffuse IBL", 2D) = "black" {}
         _Color ("Color", Color) = (1.0, 1.0, 1.0, 1.0)
         _Gloss ("Gloss", Float) = 1.0
     }
@@ -29,6 +31,7 @@ Shader "Assignments/Two"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            #pragma shader_feature _AMBIENTLIGHT_ON
 
             #define IS_BASE_PASS
 

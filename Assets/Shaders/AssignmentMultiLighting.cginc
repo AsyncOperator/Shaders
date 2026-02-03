@@ -9,8 +9,17 @@ float _NormalsIntensity;
 sampler2D _RockHeight;
 float _HeightValue;
 float4 _AmbientLight;
+sampler2D _DiffuseIBL;
 float4 _Color;
 float _Gloss;
+
+float2 dirtorectilinear(float3 d)
+{
+    // Returns between [PI, -PI] need to remap into [0, 1]
+    float x = (atan2(d.z, d.x) / UNITY_PI) * 0.5 + 0.5;
+    float y = d.y * 0.5 + 0.5;
+    return float2(x, y);
+}
 
 struct MeshData
 {
@@ -74,7 +83,12 @@ float4 frag(Interpolators i) : SV_Target
     float3 diffuselight = lambert * attenuation * lightcolor;
 
     #ifdef IS_BASE_PASS
+    #ifdef _AMBIENTLIGHT_ON
     diffuselight += _AmbientLight; // Adds the indirect diffuse lighting
+    #else
+    float3 diffuseibl = tex2Dlod(_DiffuseIBL, float4(dirtorectilinear(N), 0, 0));
+    diffuselight += diffuseibl;
+    #endif
     #endif
 
     // Phong specular highlight

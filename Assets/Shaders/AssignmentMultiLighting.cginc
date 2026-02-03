@@ -8,6 +8,7 @@ sampler2D _RockNormals;
 float _NormalsIntensity;
 sampler2D _RockHeight;
 float _HeightValue;
+float4 _AmbientLight;
 float4 _Color;
 float _Gloss;
 
@@ -71,6 +72,10 @@ float4 frag(Interpolators i) : SV_Target
     float attenuation = LIGHT_ATTENUATION(i);
     float lambert = saturate(dot(N, L));
     float3 diffuselight = lambert * attenuation * lightcolor;
+
+    #ifdef IS_BASE_PASS
+    diffuselight += _AmbientLight; // Adds the indirect diffuse lighting
+    #endif
 
     // Phong specular highlight
     float3 R = reflect(-L, N);

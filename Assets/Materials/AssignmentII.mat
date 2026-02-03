@@ -89,6 +89,8 @@ Material:
     - _Value: 3.49
     - _WaveAmp: 0.038
     m_Colors:
+    - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
+    - _AmbientLight: {r: 0.16909933, g: 0.3001753, b: 0.3773585, a: 1}
     - _BorderOutlineOffset: {r: 0.08, g: 0.01, b: 0.06, a: 0.26}
     - _BorderOutlineScale: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

@@ -66,9 +66,9 @@ Shader "Unlit/Shader9"
 
                 // Blinn-Phong specular highlight
                 float3 H = normalize((L + V));
-                float blinnphongspecularlight = pow(saturate(dot(H, N)), _Gloss) * (lambert > 0.0F) * lightcolor;
+                float3 blinnphongspecularlight = pow(saturate(dot(H, N)), _Gloss) * (lambert > 0.0F) * lightcolor;
 
-                float fresnel = 1.0F - dot(V, N);
+                // float fresnel = 1.0F - dot(V, N);
                 // return float4(fresnel.xxx, 1.0F);
 
                 return float4(diffuselight * _Color + blinnphongspecularlight, 1.0F);

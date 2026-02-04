@@ -5,12 +5,12 @@
 sampler2D _RockAlbedo;
 float4 _RockAlbedo_ST;
 sampler2D _RockNormals;
-float _NormalsIntensity;
 sampler2D _RockHeight;
-float _HeightValue;
-float4 _AmbientLight;
 sampler2D _DiffuseIBL;
 sampler2D _SpecularIBL;
+float _NormalsIntensity;
+float _HeightValue;
+float4 _AmbientLight;
 float _SpecularIntensity;
 float4 _Color;
 float _Gloss;
@@ -103,8 +103,8 @@ float4 frag(Interpolators i) : SV_Target
         lightcolor;
 
     // Blinn-Phong specular highlight
-    float3 H = normalize((L + V));
-    float blinnphongspecularlight = pow(saturate(dot(H, N)) * (lambert > 0.0F), specexp) * _Gloss * attenuation *
+    float3 H = normalize(L + V);
+    float3 blinnphongspecularlight = pow(saturate(dot(H, N)) * (lambert > 0.0F), specexp) * _Gloss * attenuation *
         lightcolor;
 
     #ifdef IS_BASE_PASS

@@ -10,6 +10,8 @@ sampler2D _RockHeight;
 float _HeightValue;
 float4 _AmbientLight;
 sampler2D _DiffuseIBL;
+sampler2D _SpecularIBL;
+float _SpecularIntensity;
 float4 _Color;
 float _Gloss;
 
@@ -91,14 +93,27 @@ float4 frag(Interpolators i) : SV_Target
     #endif
     #endif
 
+    // Specular exponent
+    float specexp = exp2(_Gloss * 11.0) + 2;
+
     // Phong specular highlight
     float3 R = reflect(-L, N);
     float3 V = normalize(_WorldSpaceCameraPos - i.vertex_worldpos);
-    float3 phongspecularlight = pow(saturate(dot(R, V)), _Gloss) * attenuation * (lambert > 0.0F) * lightcolor;
+    float3 phongspecularlight = pow(saturate(dot(R, V)) * (lambert > 0.0F), specexp) * _Gloss * attenuation *
+        lightcolor;
 
     // Blinn-Phong specular highlight
     float3 H = normalize((L + V));
-    float blinnphongspecularlight = pow(saturate(dot(H, N)), _Gloss) * attenuation * (lambert > 0.0F) * lightcolor;
+    float blinnphongspecularlight = pow(saturate(dot(H, N)) * (lambert > 0.0F), specexp) * _Gloss * attenuation *
+        lightcolor;
+
+    #ifdef IS_BASE_PASS
+    float fresnel = pow(1.0 - saturate(dot(V, N)), 5);
+    float3 viewreflected = reflect(-V, N);
+    float mip = (1.0 - _Gloss) * 6;
+    float3 specularibl = tex2Dlod(_SpecularIBL, float4(dirtorectilinear(viewreflected), mip.xx));
+    blinnphongspecularlight += (specularibl * _SpecularIntensity * fresnel);
+    #endif
 
     float3 outcolor = diffuselight * surfacecolor + blinnphongspecularlight;
 

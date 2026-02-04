@@ -70,6 +70,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: cca7be6b080c7e84bad46b2108c7c2c1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecularIBL:
+        m_Texture: {fileID: 2800000, guid: 76eb5439de6e4d94c8a7d840fd6d34e7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints:
     - _AMBIENTLIGHT: 0
     - _ApplyOffset: 1
@@ -81,15 +85,16 @@ Material:
     - _BorderOutlineThickness: 0.02
     - _ColorEnd: 0.63
     - _ColorStart: 0.192
-    - _Gloss: 420.8
+    - _Gloss: 0.829
     - _Health: 0.1
-    - _HeightValue: 0.028
+    - _HeightValue: 0.021
     - _MaxThreshold: 0.8
     - _MinThreshold: 0.2
     - _MipValue: 4.09
-    - _NormalsIntensity: 0.923
+    - _NormalsIntensity: 0.735
     - _RippleAmp: 0.062
     - _Scale: 1.06
+    - _SpecularIntensity: 0.034
     - _StepThreshold: 0.32
     - _Value: 3.49
     - _WaveAmp: 0.038

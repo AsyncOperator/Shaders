@@ -54,8 +54,8 @@ Shader "Unlit/Shader1"
                 o.uv = (v.uv + _Offset) * _Scale;
                 // All of them are the same things
                 // o.normal = UnityObjectToWorldNormal(v.normal);
-                // o.normal = normalize(mul(v.normal, (float3x3)unity_WorldToObject));
-                o.normal = normalize(mul((float3x3)unity_ObjectToWorld, v.normal));
+                o.normal = normalize(mul(v.normal, (float3x3)unity_WorldToObject));
+                // o.normal = normalize(mul((float3x3)unity_ObjectToWorld, v.normal)); // This is same as above lines ONLY when the object has uniform scaling
                 // ~All of them are the same things
 
                 return o;

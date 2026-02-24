@@ -51,7 +51,7 @@ Shader "Unlit/Shader2"
                 Interpolators o;
                 o.vertex = UnityObjectToClipPos(v.vertex); // Converts local space position to clip space position
                 o.uv = v.uv;
-                o.normal = normalize(mul((float3x3)unity_ObjectToWorld, v.normal));
+                o.normal = UnityObjectToWorldNormal(v.normal);
                 return o;
             }
 

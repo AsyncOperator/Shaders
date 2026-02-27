@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ronja_CustomLightingSurface
-  m_Shader: {fileID: 4800000, guid: a05adbbdbad5c0844951db7974c541c6, type: 3}
+  m_Name: Ronja_ScreenSpaceTextureSurface
+  m_Shader: {fileID: 4800000, guid: fa156485c17d4fae84b87b8315803cd9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,16 +24,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _RampTex:
-        m_Texture: {fileID: 2800000, guid: f105ddef5a15931418bee56b8692d9b5, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: a6603f6e5eec5d44a996502a8a392277, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Metallic: 0
+    - _Smoothness: 0.69
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Emission: {r: 0.023584906, g: 0.014132131, b: 0.008121218, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

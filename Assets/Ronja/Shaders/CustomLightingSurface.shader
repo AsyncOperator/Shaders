@@ -33,10 +33,10 @@ Shader "Ronja/CustomLightingSurface"
         {
             float NdotL = dot(s.Normal, lightDir);
             float NdotL01 = NdotL * 0.5 + 0.5;
-            float brightness = tex2D(_RampTex, float2(NdotL01, 0.5)).r;
+            float3 rampColor = tex2D(_RampTex, float2(NdotL01, 0.5)).rgb;
 
             float4 col;
-            col.rgb = brightness * atten * s.Albedo * _LightColor0.rgb;
+            col.rgb = rampColor * atten * s.Albedo * _LightColor0.rgb;
             col.a = s.Alpha;
 
             return col;

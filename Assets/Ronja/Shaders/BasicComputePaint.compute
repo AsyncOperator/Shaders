@@ -1,0 +1,23 @@
+#pragma kernel CSMain
+
+StructuredBuffer<float3> _VertexBuffer;
+RWStructuredBuffer<float4> _ColorBuffer;
+float4x4 _LocalToWorld;
+float4 _Sphere;
+uint _VertexCount;
+
+[numthreads(32,1,1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    // Make sure I don’t get out of bounds on my buffer:
+    // I compare the current iteration id with the amount of vertices
+    // and if it’s larger or equal I just return.
+    // Like I mentioned before, if I had 48 vertices, I’d end up with 2 thread groups of size 32 each.
+    // That means that the id can range from 0 to 63,
+    // but if I try and access, say, the 54th vertex on my buffer I’d get some undefined results.
+    if (id.x >= _VertexCount) return;
+
+    float3 pos = mul(_LocalToWorld, float4(_VertexBuffer[id.x], 1.0f));
+    float mask = 1.0f - saturate(distance(pos, _Sphere.xyz) / _Sphere.w);
+    _ColorBuffer[id.x] += float4(mask, 0.0f, 0.0f, 1.0f);
+}

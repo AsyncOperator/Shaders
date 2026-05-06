@@ -1,0 +1,14 @@
+#pragma kernel Spheres
+
+#include "UnityCG.cginc"
+
+#define TAU UNITY_TWO_PI
+
+RWStructuredBuffer<float3> Result;
+uniform float Time;
+
+[numthreads(64,1,1)]
+void Spheres(uint3 id : SV_DispatchThreadID)
+{
+    Result[id.x] = float3(id.x, cos(id.x + Time * TAU), 0.0f);
+}
